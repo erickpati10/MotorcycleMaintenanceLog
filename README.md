@@ -7,6 +7,8 @@ Users can add, edit, delete, and filter records. The application saves data usin
 
 --Video Link:--
 
+https://youtu.be/5H8BMSPEo3o
+
 --Development Evironment--
 
 I used Visual Studio Code, JavaScript, HTML, CSS, and chart.js. I practiced arrays, oblects, functions, recursion, and ES6 array methods. I also used ChatGPT help troubleshooting errord while developing the aplication.
