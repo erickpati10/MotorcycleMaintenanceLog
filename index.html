@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Motorcycle Maintenance Log</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Chart.js is the external JavaScript library used for the cost chart. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <header>
+        <h1>Motorcycle Maintenance Log</h1>
+        <p>
+          Track motorcycle services, mileage, costs, and maintenance history.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Add Maintenance</h2>
+
+        <form id="maintenance-form">
+          <div class="form-group">
+            <label for="date">Service Date</label>
+            <input type="date" id="date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Type</label>
+
+            <select id="service" required>
+              <option value="">Select Service</option>
+              <option value="Oil Change">Oil Change</option>
+              <option value="Chain Maintenance">Chain Maintenance</option>
+              <option value="Tire Replacement">Tire Replacement</option>
+              <option value="Brake Service">Brake Service</option>
+              <option value="Coolant">Coolant</option>
+              <option value="Fork Service">Fork Service</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mileage">Mileage</label>
+            <input
+              type="number"
+              id="mileage"
+              min="0"
+              placeholder="Example: 10500"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cost">Cost ($)</label>
+            <input
+              type="number"
+              id="cost"
+              min="0"
+              step="0.01"
+              placeholder="Example: 45.99"
+              required
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="notes">Notes</label>
+            <textarea
+              id="notes"
+              placeholder="Example: Changed oil and filter"
+            ></textarea>
+          </div>
+
+          <button type="submit" id="submit-button">Add Maintenance</button>
+
+          <button type="button" id="cancel-button" class="secondary hidden">
+            Cancel Edit
+          </button>
+        </form>
+
+        <p id="success-message" class="success-message hidden" role="status">
+          ✓ Maintenance record added successfully!
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Maintenance History</h2>
+
+        <div class="filters">
+          <div>
+            <label for="filter">Service Type</label>
+
+            <select id="filter">
+              <option value="All">All Services</option>
+              <option value="Oil Change">Oil Change</option>
+              <option value="Chain Maintenance">Chain Maintenance</option>
+              <option value="Tire Replacement">Tire Replacement</option>
+              <option value="Brake Service">Brake Service</option>
+              <option value="Coolant">Coolant</option>
+              <option value="Fork Service">Fork Service</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mileage-filter">Maximum Mileage</label>
+
+            <input
+              type="number"
+              id="mileage-filter"
+              min="0"
+              placeholder="Example: 11000"
+            />
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Service</th>
+                <th>Mileage</th>
+                <th>Cost</th>
+                <th>Notes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="maintenance-list"></tbody>
+          </table>
+        </div>
+
+        <p id="empty-message">No maintenance records found.</p>
+
+        <div class="summary">
+          <h3 id="total-cost">Total Maintenance Cost: $0.00</h3>
+
+          <p id="record-count">Total Records: 0</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Maintenance Cost by Service</h2>
+
+        <div class="chart-container">
+          <canvas id="maintenance-chart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
